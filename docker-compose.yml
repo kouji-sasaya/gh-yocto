@@ -1,0 +1,20 @@
+services:
+  yocto-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      network: host
+      args:
+        USERNAME: ${USERNAME:-yocto}
+        USER_UID: ${USER_UID}
+        USER_GID: ${USER_GID}
+    image: ${DOCKER_IMAGE_NAME:-yocto/yocto:local}
+    container_name: yocto-dev
+    volumes:
+      - ${PWD}:/workdir
+    working_dir: /workdir
+    stdin_open: true
+    tty: true
+    environment:
+      - TERM=xterm-256color
+    user: "${USER_UID}:${USER_GID}"

@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+set -e
+
+# gh-yocto - GitHub CLI extension for Yocto development environment
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+show_help() {
+    cat <<EOF
+gh-yocto - Yocto development environment manager
+
+Usage:
+  gh yocto <command> [options]
+
+Commands:
+  build     Build the Docker container for Yocto development
+  shell     Enter the Docker container shell
+  help      Show this help message
+
+Examples:
+  gh yocto build    # Build the development environment
+  gh yocto shell    # Enter the container shell
+
+Environment:
+  You can customize the Docker image by creating a .env file in the current directory.
+  See .env.example for available options.
+EOF
+}
+
+cmd_build() {
+    echo "Building Yocto development environment..."
+    
+    # Save current directory before changing to script directory
+    local ORIGINAL_PWD="$(pwd)"
+    
+    # Load .env if it exists
+    if [ -f "${SCRIPT_DIR}/.env" ]; then
+        echo "Loading configuration from .env"
+        set -a
+        source "${SCRIPT_DIR}/.env"
+        set +a
+    fi
+    
+    # Set image name and auto-detect host UID/GID
+    export DOCKER_IMAGE_NAME="${DOCKER_IMAGE_NAME:-$(id -un)/yocto:local}"
+    export USER_UID="$(id -u)"
+    export USER_GID="$(id -g)"
+    export PWD="${ORIGINAL_PWD}"
+    
+    echo "Image name: ${DOCKER_IMAGE_NAME}"
+    echo "User: ${USER_UID}:${USER_GID}"
+    echo "Working directory will be mounted: ${PWD}"
+    
+    # Build using docker compose with detailed output
+    cd "${SCRIPT_DIR}"
+    docker compose build --progress=plain
+    
+    echo ""
+    echo "Build completed successfully!"
+    echo "Run 'gh yocto shell' to enter the container."
+}
+
+cmd_shell() {
+    echo "Entering Yocto development environment..."
+    
+    # Save current directory before changing to script directory
+    local ORIGINAL_PWD="$(pwd)"
+    
+    # Load .env if it exists
+    if [ -f "${SCRIPT_DIR}/.env" ]; then
+        set -a
+        source "${SCRIPT_DIR}/.env"
+        set +a
+    fi
+    
+    # Set image name and auto-detect host UID/GID
+    export DOCKER_IMAGE_NAME="${DOCKER_IMAGE_NAME:-$(id -un)/yocto:local}"
+    export USER_UID="$(id -u)"
+    export USER_GID="$(id -g)"
+    export PWD="${ORIGINAL_PWD}"
+    
+    # Check if image exists
+    if ! docker image inspect "${DOCKER_IMAGE_NAME}" >/dev/null 2>&1; then
+        echo "Error: Docker image '${DOCKER_IMAGE_NAME}' not found."
+        echo "Please run 'gh yocto build' first."
+        exit 1
+    fi
+    
+    # Run container with current directory mounted
+    cd "${SCRIPT_DIR}"
+    docker compose run --rm yocto-dev
+}
+
+# Main command dispatcher
+case "${1:-}" in
+    build)
+        cmd_build
+        ;;
+    shell)
+        cmd_shell
+        ;;
+    help|--help|-h|"")
+        show_help
+        ;;
+    *)
+        echo "Error: Unknown command '${1}'"
+        echo ""
+        show_help
+        exit 1
+        ;;
+esac

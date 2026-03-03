@@ -1,0 +1,155 @@
+Building Yocto development environment...
+Image name: ubuntu/yocto:local
+User: 1000:1000
+Working directory will be mounted: /home/ubuntu/work/gh-yocto
+--progress is a global compose flag, better use `docker compose --progress xx build ...
+ Image ubuntu/yocto:local Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 627B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 2.13kB done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/ubuntu:24.04
+#3 DONE 0.8s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B 0.0s done
+#4 DONE 0.0s
+
+#5 [1/7] FROM docker.io/library/ubuntu:24.04@sha256:d1e2e92c075e5ca139d51a140fff46f84315c0fdce203eab2807c7e495eff4f9
+#5 CACHED
+
+#6 [2/7] RUN apt-get update && apt-get install -y --no-install-recommends     gawk wget git diffstat unzip texinfo gcc g++ build-essential     chrpath socat python3 python3-pip python3-pexpect     python3-git python3-jinja2     libegl1-mesa libsdl2-dev xterm python3-subunit     mesa-common-dev zstd liblz4-tool     locales sudo curl ca-certificates     neovim     file lz4 iputils-ping pylint     && rm -rf /var/lib/apt/lists/*
+#6 8.515 Ign:1 http://security.ubuntu.com/ubuntu noble-security InRelease
+#6 8.515 Ign:2 http://archive.ubuntu.com/ubuntu noble InRelease
+#6 18.54 Ign:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+#6 19.54 Ign:1 http://security.ubuntu.com/ubuntu noble-security InRelease
+#6 28.56 Ign:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+#6 31.56 Ign:1 http://security.ubuntu.com/ubuntu noble-security InRelease
+#6 38.58 Ign:2 http://archive.ubuntu.com/ubuntu noble InRelease
+#6 43.41 Err:1 http://security.ubuntu.com/ubuntu noble-security InRelease
+#6 43.41   Temporary failure resolving 'security.ubuntu.com'
+#6 46.43 Ign:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+#6 56.44 Ign:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+#6 66.46 Ign:2 http://archive.ubuntu.com/ubuntu noble InRelease
+#6 74.83 Ign:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+#6 84.85 Ign:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+#6 94.87 Err:2 http://archive.ubuntu.com/ubuntu noble InRelease
+#6 94.87   Temporary failure resolving 'archive.ubuntu.com'
+#6 102.7 Err:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+#6 102.7   Temporary failure resolving 'archive.ubuntu.com'
+#6 112.7 Err:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+#6 112.7   Temporary failure resolving 'archive.ubuntu.com'
+#6 112.7 Reading package lists...
+#6 112.8 W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble/InRelease  Temporary failure resolving 'archive.ubuntu.com'
+#6 112.8 W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble-updates/InRelease  Temporary failure resolving 'archive.ubuntu.com'
+#6 112.8 W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble-backports/InRelease  Temporary failure resolving 'archive.ubuntu.com'
+#6 112.8 W: Failed to fetch http://security.ubuntu.com/ubuntu/dists/noble-security/InRelease  Temporary failure resolving 'security.ubuntu.com'
+#6 112.8 W: Some index files failed to download. They have been ignored, or old ones used instead.
+#6 112.8 Reading package lists...
+#6 112.8 Building dependency tree...
+#6 112.8 Reading state information...
+#6 112.8 Package ca-certificates is not available, but is referred to by another package.
+#6 112.8 This may mean that the package is missing, has been obsoleted, or
+#6 112.8 is only available from another source
+#6 112.8 
+#6 112.8 Package locales is not available, but is referred to by another package.
+#6 112.8 This may mean that the package is missing, has been obsoleted, or
+#6 112.8 is only available from another source
+#6 112.8 
+#6 112.8 Package neovim is not available, but is referred to by another package.
+#6 112.8 This may mean that the package is missing, has been obsoleted, or
+#6 112.8 is only available from another source
+#6 112.8 
+#6 112.8 Package texinfo is not available, but is referred to by another package.
+#6 112.8 This may mean that the package is missing, has been obsoleted, or
+#6 112.8 is only available from another source
+#6 112.8 
+#6 112.8 E: Unable to locate package gawk
+#6 112.8 E: Unable to locate package wget
+#6 112.8 E: Unable to locate package git
+#6 112.8 E: Unable to locate package diffstat
+#6 112.8 E: Unable to locate package unzip
+#6 112.8 E: Package 'texinfo' has no installation candidate
+#6 112.8 E: Unable to locate package gcc
+#6 112.8 E: Unable to locate package build-essential
+#6 112.8 E: Unable to locate package chrpath
+#6 112.8 E: Unable to locate package socat
+#6 112.8 E: Unable to locate package python3
+#6 112.8 E: Unable to locate package python3-pip
+#6 112.8 E: Unable to locate package python3-pexpect
+#6 112.8 E: Unable to locate package python3-git
+#6 112.8 E: Unable to locate package python3-jinja2
+#6 112.8 E: Unable to locate package libegl1-mesa
+#6 112.8 E: Unable to locate package libsdl2-dev
+#6 112.8 E: Unable to locate package xterm
+#6 112.8 E: Unable to locate package python3-subunit
+#6 112.8 E: Unable to locate package mesa-common-dev
+#6 112.8 E: Unable to locate package zstd
+#6 112.8 E: Unable to locate package liblz4-tool
+#6 112.8 E: Package 'locales' has no installation candidate
+#6 112.8 E: Unable to locate package sudo
+#6 112.8 E: Unable to locate package curl
+#6 112.8 E: Package 'ca-certificates' has no installation candidate
+#6 112.8 E: Package 'neovim' has no installation candidate
+#6 112.8 E: Unable to locate package file
+#6 112.8 E: Unable to locate package lz4
+#6 112.8 E: Unable to locate package iputils-ping
+#6 112.8 E: Unable to locate package pylint
+#6 ERROR: process "/bin/sh -c apt-get update && apt-get install -y --no-install-recommends     gawk wget git diffstat unzip texinfo gcc g++ build-essential     chrpath socat python3 python3-pip python3-pexpect     python3-git python3-jinja2     libegl1-mesa libsdl2-dev xterm python3-subunit     mesa-common-dev zstd liblz4-tool     locales sudo curl ca-certificates     neovim     file lz4 iputils-ping pylint     && rm -rf /var/lib/apt/lists/*" did not complete successfully: exit code: 100
+------
+ > [2/7] RUN apt-get update && apt-get install -y --no-install-recommends     gawk wget git diffstat unzip texinfo gcc g++ build-essential     chrpath socat python3 python3-pip python3-pexpect     python3-git python3-jinja2     libegl1-mesa libsdl2-dev xterm python3-subunit     mesa-common-dev zstd liblz4-tool     locales sudo curl ca-certificates     neovim     file lz4 iputils-ping pylint     && rm -rf /var/lib/apt/lists/*:
+112.8 E: Unable to locate package liblz4-tool
+112.8 E: Package 'locales' has no installation candidate
+112.8 E: Unable to locate package sudo
+112.8 E: Unable to locate package curl
+112.8 E: Package 'ca-certificates' has no installation candidate
+112.8 E: Package 'neovim' has no installation candidate
+112.8 E: Unable to locate package file
+112.8 E: Unable to locate package lz4
+112.8 E: Unable to locate package iputils-ping
+112.8 E: Unable to locate package pylint
+------
+Dockerfile:7
+
+--------------------
+
+   6 |     # Install Yocto build dependencies and development tools
+
+   7 | >>> RUN apt-get update && apt-get install -y --no-install-recommends \
+
+   8 | >>>     # Yocto essential packages
+
+   9 | >>>     gawk wget git diffstat unzip texinfo gcc g++ build-essential \
+
+  10 | >>>     chrpath socat python3 python3-pip python3-pexpect \
+
+  11 | >>>     python3-git python3-jinja2 \
+
+  12 | >>>     libegl1-mesa libsdl2-dev xterm python3-subunit \
+
+  13 | >>>     mesa-common-dev zstd liblz4-tool \
+
+  14 | >>>     # Additional useful tools
+
+  15 | >>>     locales sudo curl ca-certificates \
+
+  16 | >>>     # Neovim
+
+  17 | >>>     neovim \
+
+  18 | >>>     # Additional build tools
+
+  19 | >>>     file lz4 iputils-ping pylint \
+
+  20 | >>>     && rm -rf /var/lib/apt/lists/*
+
+  21 |     
+
+--------------------
+
+failed to solve: process "/bin/sh -c apt-get update && apt-get install -y --no-install-recommends     gawk wget git diffstat unzip texinfo gcc g++ build-essential     chrpath socat python3 python3-pip python3-pexpect     python3-git python3-jinja2     libegl1-mesa libsdl2-dev xterm python3-subunit     mesa-common-dev zstd liblz4-tool     locales sudo curl ca-certificates     neovim     file lz4 iputils-ping pylint     && rm -rf /var/lib/apt/lists/*" did not complete successfully: exit code: 100
+
