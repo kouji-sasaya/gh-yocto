@@ -45,11 +45,11 @@ cmd_build() {
     export DOCKER_IMAGE_NAME="${DOCKER_IMAGE_NAME:-$(id -un)/yocto:local}"
     export USER_UID="$(id -u)"
     export USER_GID="$(id -g)"
-    export PWD="${ORIGINAL_PWD}"
+    export HOST_CWD="${ORIGINAL_PWD}"
     
     echo "Image name: ${DOCKER_IMAGE_NAME}"
     echo "User: ${USER_UID}:${USER_GID}"
-    echo "Working directory will be mounted: ${PWD}"
+    echo "Working directory will be mounted: ${HOST_CWD}"
     
     # Build using docker compose with detailed output
     cd "${SCRIPT_DIR}"
@@ -77,7 +77,7 @@ cmd_shell() {
     export DOCKER_IMAGE_NAME="${DOCKER_IMAGE_NAME:-$(id -un)/yocto:local}"
     export USER_UID="$(id -u)"
     export USER_GID="$(id -g)"
-    export PWD="${ORIGINAL_PWD}"
+    export HOST_CWD="${ORIGINAL_PWD}"
     
     # Check if image exists
     if ! docker image inspect "${DOCKER_IMAGE_NAME}" >/dev/null 2>&1; then

@@ -8,13 +8,21 @@ services:
         USERNAME: ${USERNAME:-yocto}
         USER_UID: ${USER_UID}
         USER_GID: ${USER_GID}
+        http_proxy: ${http_proxy:-}
+        https_proxy: ${https_proxy:-}
+        HTTP_PROXY: ${HTTP_PROXY:-}
+        HTTPS_PROXY: ${HTTPS_PROXY:-}
     image: ${DOCKER_IMAGE_NAME:-yocto/yocto:local}
     container_name: yocto-dev
     volumes:
-      - ${PWD}:/workdir
+      - ${HOST_CWD}:/workdir
     working_dir: /workdir
     stdin_open: true
     tty: true
     environment:
       - TERM=xterm-256color
+      - http_proxy=${http_proxy:-}
+      - https_proxy=${https_proxy:-}
+      - HTTP_PROXY=${HTTP_PROXY:-}
+      - HTTPS_PROXY=${HTTPS_PROXY:-}
     user: "${USER_UID}:${USER_GID}"
