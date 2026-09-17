@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Install Yocto build dependencies and development tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
     # Yocto essential packages
-    gawk wget git diffstat unzip texinfo gcc g++ build-essential \
+    gawk wget git diffstat cpio unzip texinfo gcc g++ build-essential \
     chrpath socat python3 python3-pip python3-venv python3-pexpect \
     python3-git python3-jinja2 \
     libegl1 libsdl2-dev xterm python3-subunit \
