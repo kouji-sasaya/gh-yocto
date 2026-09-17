@@ -19,7 +19,7 @@ Neovimを統合し、SSH環境でも軽快に動作するIDE環境を提供し�
 ✅ Ubuntu 24.04ベース  
 ✅ docker-compose.yml + Dockerfileで構成  
 ✅ GitHub CLI拡張として実装  
-✅ `gh yocto build` でDockerコンテナをビルド  
+✅ `gh yocto setup` でDockerコンテナをビルド  
 ✅ `gh yocto shell` でDockerコンテナに入る  
 ✅ Neovimインストール済み  
 ✅ vim/viはnvimへのシンボリックリンク  
@@ -55,7 +55,7 @@ gh extension install .
 ### 開発環境のビルド
 
 ```bash
-gh yocto build
+gh yocto setup
 ```
 
 ### コンテナシェルに入る

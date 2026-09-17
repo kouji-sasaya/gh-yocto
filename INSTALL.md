@@ -40,7 +40,7 @@ gh extension install .
 ### 1. 開発環境のビルド
 
 ```bash
-gh yocto build
+gh yocto setup
 ```
 
 初回実行時にDockerイメージをビルドします。イメージ名はデフォルトで `$(id -un)/yocto:local` になります。
@@ -109,7 +109,7 @@ Dockerイメージには以下が含まれています：
 Error: Docker image 'xxx/yocto:local' not found.
 ```
 
-→ `gh yocto build` を実行してイメージをビルドしてください。
+→ `gh yocto setup` を実行してイメージをビルドしてください。
 
 ### 権限エラー
 
@@ -126,7 +126,7 @@ MIT License
 - ✅ Ubuntu 24.04
 - ✅ docker-compose.yml + Dockerfile
 - ✅ gh extension としての実装
-- ✅ `gh yocto build` コマンド
+- ✅ `gh yocto setup` コマンド
 - ✅ `gh yocto shell` コマンド
 - ✅ Neovimインストール
 - ✅ vim → nvim シンボリックリンク

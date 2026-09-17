@@ -13,12 +13,12 @@ Usage:
   gh yocto <command> [options]
 
 Commands:
-  build     Build the Docker container for Yocto development
+  setup     Build the Docker container for Yocto development
   shell     Enter the Docker container shell
   help      Show this help message
 
 Examples:
-  gh yocto build    # Build the development environment
+  gh yocto setup    # Build the development environment
   gh yocto shell    # Enter the container shell
 
 Environment:
@@ -82,7 +82,7 @@ cmd_shell() {
     # Check if image exists
     if ! docker image inspect "${DOCKER_IMAGE_NAME}" >/dev/null 2>&1; then
         echo "Error: Docker image '${DOCKER_IMAGE_NAME}' not found."
-        echo "Please run 'gh yocto build' first."
+        echo "Please run 'gh yocto setup' first."
         exit 1
     fi
     
@@ -93,7 +93,7 @@ cmd_shell() {
 
 # Main command dispatcher
 case "${1:-}" in
-    build)
+    setup)
         cmd_build
         ;;
     shell)
