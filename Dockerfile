@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
     # Yocto essential packages
     gawk wget git diffstat unzip texinfo gcc g++ build-essential \
-    chrpath socat python3 python3-pip python3-pexpect \
+    chrpath socat python3 python3-pip python3-venv python3-pexpect \
     python3-git python3-jinja2 \
     libegl1 libsdl2-dev xterm python3-subunit \
     zstd liblz4-tool \
@@ -18,6 +18,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # Additional build tools
     file lz4 iputils-ping pylint \
     && rm -rf /var/lib/apt/lists/*
+
+
+RUN python3 -m venv /opt/kas-venv && \
+    /opt/kas-venv/bin/python -m pip install --no-cache-dir kas && \
+    ln -s /opt/kas-venv/bin/kas /usr/local/bin/kas
 
 # Set up locale
 RUN locale-gen en_US.UTF-8
