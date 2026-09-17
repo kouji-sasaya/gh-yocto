@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libegl1 libsdl2-dev xterm python3-subunit \
     zstd liblz4-tool \
     # Additional useful tools
-    locales sudo curl ca-certificates \
+    locales sudo curl ca-certificates yq \
     # Neovim
     neovim \
     # Additional build tools
