@@ -15,6 +15,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     locales sudo curl ca-certificates yq \
     # Neovim
     neovim \
+    # for raspberrypi
+    cpio \
+    # for buildstatus
+    python3-cairo \
     # Additional build tools
     file lz4 iputils-ping pylint \
     && rm -rf /var/lib/apt/lists/*
